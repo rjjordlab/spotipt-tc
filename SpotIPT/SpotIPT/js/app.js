@@ -20,14 +20,47 @@ document.addEventListener('DOMContentLoaded', function main(e) {
 
             for (var i = 0; i < cds.length; i++) {
                 var cd = cds[i];
-
                 var titulo = cd.getAttribute('titulo');
-                
                 var tituloContainer = document.createElement('p');
-
-                tituloContainer.textContent = titulo;
-
+                tituloContainer.textContent = "Álbum: " + titulo;
                 document.body.appendChild(tituloContainer);
+
+                var artista = cd.getAttribute('autoria');
+                var artistaContainer = document.createElement('p');
+                artistaContainer.textContent = "Artista: " + artista;
+                document.body.appendChild(artistaContainer);
+
+                var editora = cd.getAttribute('editora');
+                var editoraContainer = document.createElement('p');
+                editoraContainer.textContent = "Editora: " + editora;
+                document.body.appendChild(editoraContainer);
+
+                var linkamazon = cd.getAttribute('amazon');
+                var linkamazonContainer = document.createElement('p');
+                linkamazonContainer.textContent = "Link: " + linkamazon;
+                document.body.appendChild(linkamazonContainer);
+
+                var capa = cd.getElementsByTagName('capa')[0].getAttribute('imagMini');
+                var capaContainer = document.createElement('p');
+                capaContainer.textContent = "Capa IMG: " + capa;
+                document.body.appendChild(capaContainer);
+
+                var dataD = cd.getElementsByTagName('data')[0].getAttribute('dia');
+                var dataM = cd.getElementsByTagName('data')[0].getAttribute('mes');
+                var dataA = cd.getElementsByTagName('data')[0].getAttribute('ano');
+                var dataContainer = document.createElement('p');
+                dataContainer.textContent = "Data: " + dataD + "/" + dataM + "/" + dataA;
+                document.body.appendChild(dataContainer);
+
+                var faixaslista = cd.getElementsByTagName('faixa').length;
+                for (var j = 0; j < faixaslista; j++) {
+                    var faixaNum = cd.getElementsByTagName('faixa')[j].getAttribute('num');
+                    var faixaNome = cd.getElementsByTagName('faixa')[j].getAttribute('ref');
+                    var faixaContainer = document.createElement('p');
+                    faixaContainer.textContent = "Faixa nº" + faixaNum + ": " + faixaNome;
+                    document.body.appendChild(faixaContainer);
+                }
+
             }
 
         } else {  // Erro
